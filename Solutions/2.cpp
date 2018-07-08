@@ -12,23 +12,25 @@ do not exceed four million, find the sum of the even-valued terms.
 
 #include <iostream>
 
-const int N = 4000000;
-long long int mem[N];
+const int N_MAX = 4000000;
+const int ARR_MAX = 4096;
+int mem[ARR_MAX];
 
-long long int evenFib(int n)
+int evenFibSum()
 {
-	long long int s = 1;
+	int s = 0;
 	mem[0] = mem[1] = 1;
 
-	for (size_t i = 2; i <= n; i++)
+	for (size_t i = 2;; i++)
 	{
-		mem[i] = mem[i - 1] + mem[i - 2];
-		if (!(mem[i] & 1)) s += mem[i];
+		mem[i] = 4 * mem[i - 1] + mem[i - 2];
+		if (mem[i] > N_MAX) break;
+		s += mem[i];
 	}
 	return s;
 }
 
 int main()
 {
-	std::cout << evenFib(N) << '\n';
+	std::cout << evenFibSum() << '\n';
 }
