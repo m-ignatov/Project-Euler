@@ -13,13 +13,14 @@ do not exceed four million, find the sum of the even-valued terms.
 #include <iostream>
 
 const int N_MAX = 4000000;
-const int ARR_MAX = 4096;
+const int ARR_MAX = 128;
 int mem[ARR_MAX];
 
-int evenFibSum()
+int evenFibonacciSum()
 {
-	int s = 0;
-	mem[0] = mem[1] = 1;
+	mem[0] = 2;
+	mem[1] = 8;
+	int s = mem[0] + mem[1];
 
 	for (size_t i = 2;; i++)
 	{
@@ -32,5 +33,5 @@ int evenFibSum()
 
 int main()
 {
-	std::cout << evenFibSum() << '\n';
+	std::cout << evenFibonacciSum() << '\n';
 }
